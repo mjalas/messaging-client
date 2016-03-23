@@ -24,9 +24,16 @@ class MessagingClient(object):
         """
         return self.command_line_parser.parse()
 
-    def connect(self, host, port):
+    def set_address(self, host, port):
+        self.host = host
+        self.port = port
+
+    def connect(self, host=None, port=None):
         """Connects to given host address and port."""
-        self.socket.connect(host, port)
+        if host is None and port is None:
+            self.socket.connect(self.host, self.port)
+        else:
+            self.socket.connect(host, port)
 
     def close(self):
         """Closes the connection to remote host."""
