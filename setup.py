@@ -23,8 +23,6 @@ setup(
     license=metadata.LICENSE,
     keywords=metadata.KEYWORDS,
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-
-    data_files=[('data', ['data/test.json'])],
     entry_points={
         'console_scripts': [
             'messaging-client=messaging_client.__main__:main',
