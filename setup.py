@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
+from messaging_client.metadata import VERSION
 
 here = path.abspath(path.dirname(__file__))
 
@@ -13,7 +14,7 @@ if path.exists(path.join(here, 'README.rst')):
 
 setup(
     name='messaging-client',
-    version='0.0.1',
+    version=VERSION,
     description='A simple message transport application and library.',
     long_description=long_description,
     url='https://github.com/mjalas/messaging-client',
