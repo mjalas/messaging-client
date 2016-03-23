@@ -14,7 +14,7 @@ if path.exists(path.join(here, 'README.rst')):
 setup(
     name='messaging-client',
     version='0.0.1',
-    description='A simple message transport application',
+    description='A simple message transport application and library.',
     long_description=long_description,
     url='https://github.com/mjalas/messaging-client',
     author='Mats Jalas',
