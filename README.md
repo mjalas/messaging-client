@@ -1,6 +1,6 @@
 # Messaging client
 
-Simple network messaging client application that can send messages stored in a file to a remote host. 
+Simple network messaging client application that can send messages stored in a file to a remote host.
 
 
 ## Setup virtual environment
@@ -8,13 +8,13 @@ Simple network messaging client application that can send messages stored in a f
 To setup a virtual environment after cloning the repository, it is easiest to use one of the two creation scripts included in the project. The first option is to create the virtual environment with virtualenv:
 
 ```
-./venv_create.sh
+env_creators/venv_create.sh
 ```
 
 The second option is to create the environment with virtualenvwrapper:
 
 ```
-./venvwrapper_create.sh
+env_creators/venvwrapper_create.sh
 ```
 
 However, this requires that virtualenvwrappers has been setup (see http://docs.python-guide.org/en/latest/dev/virtualenvs/ if not familiar with virtualenvwrapper)
