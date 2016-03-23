@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from messaging_client.app import App
 
 
