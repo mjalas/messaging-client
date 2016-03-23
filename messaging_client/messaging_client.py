@@ -10,6 +10,10 @@ class MessagingClient(object):
         else:
             self.command_line_parser = DefaultOptionParser()
         self.socket = ClientSocket(message_length=max_message_length)
+        self.debug = False
+
+    def set_debug_mode(self, value):
+        self.debug = value
 
     def parse_command_line(self):
         """Parses the command line arguments.
@@ -26,7 +30,7 @@ class MessagingClient(object):
 
     def close(self):
         """Closes the connection to remote host."""
-        self.client.close()
+        self.socket.close()
 
     def _readFile(self, filename):
         data = []
@@ -35,16 +39,16 @@ class MessagingClient(object):
         return "".join(data)
 
     # TODO: send until all content of the file is sent, and not just what can fit.
-    def send_file_message(self, filename, printMessage=False):
+    def send_file_message(self, filename):
         """Send message inside the given file."""
         data = self._readFile(filename)
-        if printMessage:
+        if self.debug:
             print(data)
         self.socket.send(data)
 
-    def send_message(self, message, printMessage=False):
+    def send_message(self, message):
         """Send a given message to the remote host."""
-        if printMessage:
+        if self.debug:
             print(message)
         self.socket.send(message)
 
