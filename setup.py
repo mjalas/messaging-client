@@ -26,7 +26,7 @@ setup(
     data_files=[('data', ['data/test.json'])],
     entry_points={
         'console_scripts': [
-            'messaging-client=app:main',
+            'messaging-client=main:main',
         ],
     },
 )
