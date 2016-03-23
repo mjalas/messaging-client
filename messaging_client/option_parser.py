@@ -1,21 +1,64 @@
 from optparse import OptionParser
 
+DEFAULT_HOST = '127.0.0.1'
+DEFAULT_PORT = 8700
+
 
 class DefaultOptionParser(object):
 
     def __init__(self):
         self.parser = OptionParser(usage="usage: %prog [options] filename",
                                    version="%prog 1.0")
-        self.parser.add_option("-f", "--file",
-                               dest="filename",
-                               help="File containing the message to be sent")
-        self.parser.add_option("-r", "--host",
+        self.parser.add_option("-m", "--message",
+                               dest="message",
+                               help="Message to be sent.")
+        self.parser.add_option("-a", "--address",
                                dest="host",
-                               help="Address of remote host (default is localhost).")
+                               help="Address of remote host (default is " + DEFAULT_HOST + ").")
         self.parser.add_option("-p", "--port",
                                type="int",
                                dest="port",
-                               help="Port of the application to send a message (default: 8700")
+                               help="Port of the application to send a message (default: " + str(DEFAULT_PORT) +")")
+        self.parser.add_option("-d", "--debug",
+                               dest="debug",
+                               help="Enable debug mode.")
+
+    def _set_attributes(self, args, options):
+        self.args = args
+        self.options = options
+
+        if len(args) == 1:
+            self.file = args[0]
+            self.message = None
+        elif options.message is not None:
+            self.message = options.message
+            self.file = None
+        elif options.message is None and len(args) < 1:
+            self.parser.error("No filename or message given!")
+
+        if options.host is not None:
+            self.host = options.host
+        else:
+            self.host = DEFAULT_HOST
+        if options.port is not None:
+            self.port = options.port
+        else:
+            self.port = DEFAULT_PORT
+        if options.debug is not None:
+            self.debug = True
+        else:
+            self.debug = False
+
+    def _create_dictionary(self):
+        values = {}
+        values['args'] = self.args
+        values['options'] = self.options
+        values['file'] = self.file
+        values['message'] = self.message
+        values['host'] = self.host
+        values['port'] = self.port
+        values['debug'] = self.debug
+        return values
 
     def parse(self):
         """Parse command line arguments and options.
@@ -23,26 +66,6 @@ class DefaultOptionParser(object):
         Returns:
             Dictionary containing all given command line arguments and options.
         """
-        values = {}
         (options, args) = self.parser.parse_args()
-        if len(args) == 1:
-            self.filename = args[0]
-            values['file'] = self.filename
-        elif options.filename is not None:
-            self.filename = options.filename
-            values['file'] = self.filename
-        elif options.filename is None and len(args) < 1:
-            self.parser.error("No filename given!")
-
-        if options.host is not None:
-            self.host = options.host
-            values['host'] = self.host
-        if options.port is not None:
-            self.port = options.port
-            values['port'] = self.port
-
-        self.args = args
-        values['args'] = args
-        self.options = options
-        values['options'] = options
-        return values
+        self._set_attributes(args, options)
+        return self._create_dictionary()
