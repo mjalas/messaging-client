@@ -1,5 +1,5 @@
 NAME = 'messaging-client'
-VERSION = '0.0.1'
+VERSION = '0.0.3'
 DESCRIPTION = 'A simple message transport application and library.'
 URL = 'https://github.com/mjalas/messaging-client'
 AUTHOR = 'Mats Jalas'
