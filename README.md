@@ -37,9 +37,24 @@ python setup.py install
 
 ## Usage
 
-To send a message to a remote host, first write the message into a file and then run the following command:
+The messaging-client sends messages by default to localhost:8700
+
+To send a message written as a command line argument to:
+```
+messaging-client -m <message string>
+```
+
+To send a message written into a file:
+```
+messaging-client <message file>
+```
+
+Either remote host address or port number or both can be specified with command line options:
 
 ```
-messaging-client -m <message file>
+messaging-client -h <address> -p <port> <filename>
 ```
-
+or
+```
+messaging-client -h <address> -p <port> -m <message string>
+```
