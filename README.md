@@ -25,7 +25,7 @@ There are currently two different ways of installing the application.
 
 Through pip:
 ```
-pip install git+https://github.com/mjalas/messaging-client.git
+pip install messaging-client
 ```
 
 Manually:
