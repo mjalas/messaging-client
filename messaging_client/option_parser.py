@@ -1,4 +1,5 @@
 from optparse import OptionParser
+from messaging_client.metadata import VERSION
 
 DEFAULT_HOST = '127.0.0.1'
 DEFAULT_PORT = 8700
@@ -8,7 +9,7 @@ class DefaultOptionParser(object):
 
     def __init__(self):
         self.parser = OptionParser(usage="usage: %prog [options] filename",
-                                   version="%prog 1.0")
+                                   version="%prog " + VERSION)
         self.parser.add_option("-m", "--message",
                                dest="message",
                                help="Message to be sent.")
