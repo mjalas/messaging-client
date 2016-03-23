@@ -1,4 +1,3 @@
-
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
@@ -6,6 +5,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
+# TODO: Currently not working because of markdown to reStructuredText conversion not added.
 long_description = ""
 if path.exists(path.join(here, 'README.rst')):
     with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
