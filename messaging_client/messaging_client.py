@@ -13,6 +13,7 @@ class MessagingClient(object):
         self.debug = False
 
     def set_debug_mode(self, value):
+        """Set debug to True or False."""
         self.debug = value
 
     def parse_command_line(self):
@@ -25,6 +26,7 @@ class MessagingClient(object):
         return self.command_line_parser.parse()
 
     def set_address(self, host, port):
+        """Add host and port attributes"""
         self.host = host
         self.port = port
 
