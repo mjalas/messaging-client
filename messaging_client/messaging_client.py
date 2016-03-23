@@ -9,7 +9,7 @@ class MessagingClient(object):
             self.command_line_parser = command_line_parser
         else:
             self.command_line_parser = DefaultOptionParser()
-        self.client = ClientSocket(message_length=max_message_length)
+        self.socket = ClientSocket(message_length=max_message_length)
 
     def parse_command_line(self):
         """Parses the command line arguments.
@@ -22,7 +22,7 @@ class MessagingClient(object):
 
     def connect(self, host, port):
         """Connects to given host address and port."""
-        self.client.connect(host, port)
+        self.socket.connect(host, port)
 
     def close(self):
         """Closes the connection to remote host."""
@@ -40,13 +40,13 @@ class MessagingClient(object):
         data = self._readFile(filename)
         if printMessage:
             print(data)
-        self.client.send(data)
+        self.socket.send(data)
 
     def send_message(self, message, printMessage=False):
         """Send a given message to the remote host."""
         if printMessage:
             print(message)
-        self.client.send(message)
+        self.socket.send(message)
 
     def receive_response(self):
         """Receive a response from the remote host.
@@ -54,4 +54,4 @@ class MessagingClient(object):
         Returns:
             The received message as a string.
         """
-        return self.client.receive()
+        return self.socket.receive()
