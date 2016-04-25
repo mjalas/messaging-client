@@ -2,6 +2,9 @@
 *.sublime-project
 *.sublime-workspace
 
+# Jetbrains IDE files
+.idea/
+
 # Virtual environments
 .env
 .venv
