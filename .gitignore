@@ -25,3 +25,8 @@ __pycache__*
 
 # Tox files
 .tox/
+
+# Coverage
+.coverage
+htmlcov/
+cover/
