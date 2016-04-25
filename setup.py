@@ -6,11 +6,14 @@ import messaging_client.metadata as metadata
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-# TODO: Currently not working because of markdown to reStructuredText conversion not added.
 long_description = ""
-if path.exists(path.join(here, 'README.rst')):
-    with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-        long_description = f.read()
+
+try:
+    from pypandoc import convert
+    if path.exists(path.join(here, 'README.md')):
+        long_description = convert('README.md', 'rst')
+except ImportError:
+    print("warning: pypandoc module not found, could not convert Markdown to RST")
 
 setup(
     name=metadata.NAME,
@@ -23,6 +26,9 @@ setup(
     license=metadata.LICENSE,
     keywords=metadata.KEYWORDS,
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    setup_requires=['nose>=1.0', 'coverage>=4.0.3', 'pypandoc>=1.1.3'],
+    test_suite='nose.collector',
+    tests_require=['nose'],
     entry_points={
         'console_scripts': [
             'messaging-client=messaging_client.__main__:main',
