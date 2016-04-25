@@ -51,14 +51,8 @@ class DefaultOptionParser(object):
             self.debug = False
 
     def _create_dictionary(self):
-        values = {}
-        values['args'] = self.args
-        values['options'] = self.options
-        values['file'] = self.file
-        values['message'] = self.message
-        values['host'] = self.host
-        values['port'] = self.port
-        values['debug'] = self.debug
+        values = {'args': self.args, 'options': self.options, 'file': self.file, 'message': self.message,
+                  'host': self.host, 'port': self.port, 'debug': self.debug}
         return values
 
     def parse(self):
