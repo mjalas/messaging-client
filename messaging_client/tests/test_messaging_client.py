@@ -14,6 +14,9 @@ class DummySocket(ClientSocket):
     def connect(self, host, port):
         self.connected = True
 
+    def print_debug_message(self):
+        pass
+
     def send(self, message):
         self.sent_message = message
 
