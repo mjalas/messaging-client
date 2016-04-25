@@ -4,13 +4,13 @@ from messaging_client.option_parser import DefaultOptionParser
 
 class MessagingClient(object):
 
-    def __init__(self, command_line_parser=None, max_message_length=1024):
-        if command_line_parser:
-            self.command_line_parser = command_line_parser
-        else:
-            self.command_line_parser = DefaultOptionParser()
-        self.socket = ClientSocket(message_length=max_message_length)
+    def __init__(self, command_line_parser=None, max_message_length=1024, socket=None):
+        """"""
+        self.command_line_parser = command_line_parser if command_line_parser is not None else DefaultOptionParser()
+        self.socket = socket if socket is not None else ClientSocket(message_length=max_message_length)
         self.debug = False
+        self.host = None
+        self.port = None
 
     def set_debug_mode(self, value):
         """Set debug to True or False."""
@@ -40,7 +40,7 @@ class MessagingClient(object):
         """Closes the connection to remote host."""
         self.socket.close()
 
-    def _readFile(self, filename):
+    def _read_file(self, filename):
         data = []
         with open(filename, 'r') as file:
             data = file.readlines()
