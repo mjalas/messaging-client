@@ -16,6 +16,10 @@ class MessagingClient(object):
         """Set debug to True or False."""
         self.debug = value
 
+    def print_debug_message(self, message):
+        if self.debug:
+            print(message)
+
     def parse_command_line(self):
         """Parses the command line arguments.
 
@@ -50,14 +54,12 @@ class MessagingClient(object):
     def send_file_message(self, filename):
         """Send message inside the given file."""
         data = self._readFile(filename)
-        if self.debug:
-            print(data)
+        self.print_debug_message(data)
         self.socket.send(data)
 
     def send_message(self, message):
         """Send a given message to the remote host."""
-        if self.debug:
-            print(message)
+        self.print_debug_message(message)
         self.socket.send(message)
 
     def receive_response(self):
