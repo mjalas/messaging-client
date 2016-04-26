@@ -1,7 +1,7 @@
 from messaging_client.messaging_client import MessagingClient
 
 
-class App():
+class App(object):
 
     def __init__(self):
         self.client = MessagingClient()
