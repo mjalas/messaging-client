@@ -46,8 +46,8 @@ class MessagingClient(object):
 
     def _read_file(self, filename):
         data = []
-        with open(filename, 'r') as file:
-            data = file.readlines()
+        with open(filename, 'r') as f:
+            data = f.readlines()
         return "".join(data)
 
     # TODO: send until all content of the file is sent, and not just what can fit.
