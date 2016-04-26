@@ -1,1 +1,1 @@
-mkvirtualenv messaging-client && pip install -r requirements.txt
+mkvirtualenv messaging-client && pip install -r ../requirements.txt
