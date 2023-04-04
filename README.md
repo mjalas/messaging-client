@@ -1,8 +1,6 @@
 # Messaging client
 [![PyPI version](https://badge.fury.io/py/messaging-client.svg)](https://badge.fury.io/py/messaging-client)
-[![Build Status](https://travis-ci.org/mjalas/messaging-client.svg?branch=master)](https://travis-ci.org/mjalas/messaging-client)
 [![Coverage Status](https://coveralls.io/repos/github/mjalas/messaging-client/badge.svg?branch=master)](https://coveralls.io/github/mjalas/messaging-client?branch=master)
-[![Code Health](https://landscape.io/github/mjalas/messaging-client/master/landscape.svg?style=flat)](https://landscape.io/github/mjalas/messaging-client/master)
 
 Simple network messaging client application that can send messages stored in a file or added as a command-line argument to a remote host.
 
